@@ -1,209 +1,376 @@
+<div align="center">
+
 # 🔌 Marshall Extensions
 
-**OSINT & Security Extensions for Marshall Browser**
+### Security & OSINT Extensions for Marshall Browser
 
-A collection of installable plugins and extensions that enhance Marshall Browser with additional security testing and reconnaissance capabilities. All extensions run through a **secure sandboxed container** with honeypot detection.
+[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg?style=for-the-badge)](LICENSE)
+[![Marshall](https://img.shields.io/badge/Marshall-Compatible-purple.svg?style=for-the-badge)](https://github.com/bad-antics/marshall)
+[![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
+[![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)](https://go.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-## 🔒 Secure Sandbox Architecture
+<br/>
 
-All extensions are executed within a multi-layered security sandbox:
+**A curated collection of security-focused browser extensions with multi-layered sandbox isolation and honeypot detection.**
 
-```
-┌────────────────────────────────────────────────────────────────┐
-│                    Marshall Browser                             │
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │              Secure Communication Layer                   │  │
-│  │         (TypeScript - AES-256-GCM Encrypted)             │  │
-│  └──────────────────────────────────────────────────────────┘  │
-│                            ▼                                    │
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │              Sandbox Core Runtime                         │  │
-│  │            (Rust - seccomp/namespace)                     │  │
-│  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐ │  │
-│  │  │ Isolation   │ │ Verification│ │ Threat Detection    │ │  │
-│  │  │ Engine      │ │ (Ed25519)   │ │ (Score-based)       │ │  │
-│  │  └─────────────┘ └─────────────┘ └─────────────────────┘ │  │
-│  └──────────────────────────────────────────────────────────┘  │
-│                            ▼                                    │
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │              Honeypot System                              │  │
-│  │            (Go - Adaptive Deception)                      │  │
-│  │  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────────────────┐ │  │
-│  │  │Network │ │ API    │ │ File   │ │ Data Honeytokens   │ │  │
-│  │  │Honeypot│ │Honeypot│ │Honeypot│ │ (Fake Credentials) │ │  │
-│  │  └────────┘ └────────┘ └────────┘ └────────────────────┘ │  │
-│  └──────────────────────────────────────────────────────────┘  │
-└────────────────────────────────────────────────────────────────┘
-```
+[Extensions](#-available-extensions) • [Installation](#-installation) • [Sandbox](#-sandbox-architecture) • [Development](#️-extension-development) • [Documentation](#-documentation)
 
-### Sandbox Components
+</div>
 
-| Component | Language | Purpose |
-|-----------|----------|---------|
-| `sandbox/core/` | Rust | Process isolation, threat scoring, permission enforcement |
-| `sandbox/honeypot/` | Go | Deception system, fake services, intrusion detection |
-| `sandbox/comm/` | TypeScript | Encrypted IPC, key exchange, message signing |
+---
+
+## 🎯 Overview
+
+Marshall Extensions provides a growing ecosystem of **security and OSINT tools** that integrate directly into the [Marshall Browser](https://github.com/bad-antics/marshall). Every extension runs inside a **hardened sandbox** with:
+
+- 🔐 **AES-256-GCM encrypted communication**
+- 🦀 **Rust-based process isolation** (seccomp-bpf, namespaces)
+- 🍯 **Go honeypot system** for detecting malicious behavior
+- 📊 **Behavioral threat scoring** with automatic containment
+
+---
 
 ## 📦 Available Extensions
 
-### Recon Extensions
-- **🔍 Shodan Lookup** - Query Shodan.io for IP/domain intelligence
-- **📋 WHOIS Inspector** - Detailed domain registration info
-- **⚡ XSS Scanner** - Detect Cross-Site Scripting vulnerabilities
-- **📝 Header Analyzer** - Security header analysis and recommendations
-- **🔐 Cert Inspector** *(Ruby)* - SSL/TLS certificate analysis with grading
+### 🔍 Reconnaissance
 
-### Forensics Extensions
-- **🧠 Memory Forensics** *(C)* - Memory artifact detection, shellcode patterns
+| Extension | Description | Language |
+|-----------|-------------|----------|
+| **Shodan Lookup** | Query Shodan.io for IP/domain intelligence, open ports, vulnerabilities | JavaScript |
+| **WHOIS Inspector** | Detailed domain registration info, registrar history, name servers | JavaScript |
+| **DNS Analyzer** | DNS record enumeration, zone transfers, subdomain discovery | JavaScript |
+| **Wayback Machine** | View historical snapshots of any webpage | JavaScript |
 
-### Network Extensions  
-- **📡 Traffic Analyzer** *(TypeScript)* - Network monitoring, anomaly detection
+### ⚡ Vulnerability Assessment
 
-### Utility Extensions
-- **🔧 Request Tamper** *(Lua)* - HTTP interception, modification, replay
-- **📊 Request Logger** - Log and export all HTTP requests
-- **🎨 Response Beautifier** - Format JSON, XML, HTML responses
-- **⏱️ Performance Analyzer** - Page load timing and metrics
-- **📸 Screenshot Tool** - Full page and element screenshots
+| Extension | Description | Language |
+|-----------|-------------|----------|
+| **XSS Scanner** | Detect reflected, stored, and DOM-based XSS vulnerabilities | JavaScript |
+| **Header Analyzer** | Security header analysis (CSP, HSTS, X-Frame-Options) with recommendations | JavaScript |
+| **Cert Inspector** | SSL/TLS certificate analysis, chain validation, grading | Ruby |
+| **SQLi Detector** | SQL injection point detection and payload testing | JavaScript |
 
-### Multi-Language Stack
-Extensions are written in various languages for versatility:
-- **Rust** - Core sandbox runtime
-- **Go** - Honeypot system  
-- **TypeScript** - Communication layer, network extensions
-- **C** - Low-level forensics
-- **Ruby** - Certificate analysis
-- **Lua** - Scripting/request manipulation
-- **JavaScript** - UI extensions
+### 📡 Network Analysis
+
+| Extension | Description | Language |
+|-----------|-------------|----------|
+| **Traffic Analyzer** | Real-time network monitoring, anomaly detection, traffic patterns | TypeScript |
+| **Request Tamper** | HTTP interception, modification, replay attacks | Lua |
+| **WebSocket Inspector** | Monitor and modify WebSocket connections | TypeScript |
+| **Cookie Manager** | Advanced cookie analysis, modification, and export | JavaScript |
+
+### 🧠 Forensics
+
+| Extension | Description | Language |
+|-----------|-------------|----------|
+| **Memory Forensics** | Memory artifact detection, shellcode patterns, process injection | C |
+| **JS Deobfuscator** | Unpack and analyze obfuscated JavaScript | JavaScript |
+| **Metadata Extractor** | Extract EXIF, document metadata from files | Python |
+
+### ��️ Utilities
+
+| Extension | Description | Language |
+|-----------|-------------|----------|
+| **Request Logger** | Log and export all HTTP requests/responses | JavaScript |
+| **Response Beautifier** | Format JSON, XML, HTML responses | JavaScript |
+| **Hash Calculator** | MD5, SHA-1, SHA-256, SHA-512 hash generation | JavaScript |
+| **Encoder/Decoder** | Base64, URL, HTML entity encoding/decoding | JavaScript |
+| **Screenshot Tool** | Full page and element screenshots | JavaScript |
+
+---
 
 ## 🚀 Installation
 
-### Method 1: Marshall Extension Manager
-1. Open Marshall Browser
-2. Go to `Settings > Extensions`
-3. Click "Install from Repository"
+### Method 1: Marshall Extension Manager (Recommended)
+
+1. Open **Marshall Browser**
+2. Navigate to `Settings → Extensions`
+3. Click **"Browse Repository"**
 4. Select extensions to install
+5. Grant required permissions
 
 ### Method 2: Manual Installation
-1. Clone this repository
-2. Copy desired extension folder to `~/.marshall/extensions/`
-3. Restart Marshall Browser
-4. Enable extension in Settings
 
 ```bash
+# Clone the repository
 git clone https://github.com/bad-antics/marshall-extensions.git
-cp -r marshall-extensions/osint/shodan-lookup ~/.marshall/extensions/
+
+# Copy extension to Marshall extensions directory
+cp -r marshall-extensions/extensions/recon/shodan-lookup ~/.marshall/extensions/
+
+# Restart Marshall Browser
+marshall --reload-extensions
 ```
 
-## 📁 Project Structure
+### Method 3: Install from URL
 
+```bash
+# Install directly from GitHub
+marshall --install-extension https://github.com/bad-antics/marshall-extensions/releases/download/v1.0.0/shodan-lookup.mext
 ```
-marshall-extensions/
-├── sandbox/                    # Secure container system
-│   ├── core/                   # Rust sandbox runtime
-│   │   ├── src/
-│   │   │   ├── lib.rs          # Main sandbox logic
-│   │   │   ├── isolation.rs    # Process isolation
-│   │   │   ├── verification.rs # Signature verification
-│   │   │   └── channel.rs      # IPC messaging
-│   │   └── Cargo.toml
-│   ├── honeypot/               # Go honeypot system
-│   │   ├── main.go             # Deception services
-│   │   └── go.mod
-│   └── comm/                   # TypeScript secure channel
-│       ├── channel.ts          # Encrypted communication
-│       ├── package.json
-│       └── tsconfig.json
-├── extensions/
-│   ├── recon/                  # Reconnaissance tools
-│   │   ├── shodan-lookup/
-│   │   ├── whois-inspector/
-│   │   ├── xss-scanner/
-│   │   ├── header-analyzer/
-│   │   └── cert-inspector/     # Ruby
-│   ├── forensics/              # Digital forensics
-│   │   └── memory-forensics/   # C
-│   ├── network/                # Network analysis
-│   │   └── traffic-analyzer/   # TypeScript
-│   └── utility/                # Utility tools
-│       └── request-tamper/     # Lua
-└── lib/
-    ├── marshall-api.js
-    └── common-utils.js
+
+---
+
+## 🔒 Sandbox Architecture
+
+All extensions execute in a **multi-layered security sandbox** that isolates untrusted code and detects malicious behavior.
+
+```mermaid
+flowchart TB
+    subgraph Browser["🌐 Marshall Browser"]
+        subgraph CommLayer["📡 Secure Communication Layer<br/><i>TypeScript • AES-256-GCM</i>"]
+            ECDH["🔑 ECDH Key Exchange"]
+            Sign["✍️ Message Signing"]
+            Replay["🛡️ Replay Protection"]
+        end
+        
+        subgraph SandboxCore["🦀 Sandbox Core<br/><i>Rust • libseccomp</i>"]
+            Isolation["🔒 Process Isolation"]
+            Verify["✅ Ed25519 Verification"]
+            Threat["⚠️ Threat Detection"]
+        end
+        
+        subgraph Honeypot["🍯 Honeypot System<br/><i>Go • Deception</i>"]
+            NetHP["🌐 Network"]
+            ApiHP["🔌 API"]
+            FileHP["📁 File"]
+            DataHP["🔑 Data"]
+        end
+    end
+    
+    Ext["🧩 Extension"] ==> CommLayer
+    CommLayer ==> SandboxCore
+    SandboxCore ==> Honeypot
+    Threat -.->|"Score > 50"| Honeypot
 ```
+
+### Security Layers
+
+| Layer | Component | Technology | Purpose |
+|-------|-----------|------------|---------|
+| **1** | Communication | TypeScript | AES-256-GCM encryption, ECDH key exchange |
+| **2** | Sandbox Core | Rust | seccomp-bpf syscall filtering, namespace isolation |
+| **3** | Honeypot | Go | Fake services, credential honeytokens, intrusion detection |
+
+### Threat Detection
+
+The sandbox monitors all extension behavior and assigns threat scores:
+
+| Indicator | Score | Action |
+|-----------|-------|--------|
+| Blocked API call | +10 | Log warning |
+| Excessive network requests | +5 | Rate limit |
+| Unauthorized file access | +15 | Deny + alert |
+| Credential harvesting attempt | +25 | Honeypot redirect |
+| Process/memory scanning | +20 | Terminate |
+| **Score > 50** | — | **Full honeypot containment** |
+
+### Permission System
+
+Extensions must declare required permissions in their manifest:
+
+```json
+{
+  "permissions": [
+    "activeTab",      // Access current tab
+    "network",        // Make HTTP requests
+    "storage",        // Persistent storage
+    "dom",            // Page DOM access
+    "clipboard",      // Clipboard access
+    "notifications"   // System notifications
+  ]
+}
+```
+
+---
 
 ## 🛠️ Extension Development
 
-### Creating a New Extension
+### Quick Start
 
-Each extension requires:
-- `manifest.json` - Extension metadata
-- `main.js` - Main extension code
-- `icon.png` - Extension icon (128x128)
-- `README.md` - Documentation
+```bash
+# Create new extension from template
+marshall-cli create-extension my-extension
 
-### Manifest Example
+# Structure created:
+my-extension/
+├── manifest.json    # Extension metadata
+├── main.js          # Entry point
+├── icon.png         # 128x128 icon
+└── README.md        # Documentation
+```
+
+### Manifest Schema
 
 ```json
 {
   "name": "My Extension",
   "version": "1.0.0",
-  "description": "Description here",
-  "author": "bad-antics",
-  "permissions": ["activeTab", "storage", "network"],
+  "description": "What this extension does",
+  "author": "your-username",
+  "homepage": "https://github.com/your-username/my-extension",
+  "permissions": ["activeTab", "network"],
   "main": "main.js",
   "icon": "icon.png",
-  "category": "osint"
+  "category": "recon",
+  "marshall_version": ">=1.0.0"
 }
 ```
 
 ### Marshall Extension API
 
 ```javascript
-// Access current tab
-marshall.tabs.getCurrent().then(tab => {
-  console.log(tab.url);
+// Get current tab info
+const tab = await marshall.tabs.getCurrent();
+console.log(tab.url, tab.title);
+
+// Make network request (sandboxed)
+const response = await marshall.network.fetch('https://api.example.com/data', {
+  method: 'GET',
+  headers: { 'X-API-Key': apiKey }
 });
+const data = await response.json();
 
-// Make requests
-marshall.network.fetch(url, options).then(response => {
-  // Handle response
+// Store data persistently
+await marshall.storage.set('lastResult', data);
+const stored = await marshall.storage.get('lastResult');
+
+// Show UI panel
+marshall.ui.showPanel(`
+  <div class="result">
+    <h2>Results</h2>
+    <pre>${JSON.stringify(data, null, 2)}</pre>
+  </div>
+`);
+
+// Send notification
+marshall.ui.notify('Scan complete!', 'success');
+
+// Access page DOM (requires 'dom' permission)
+const pageContent = await marshall.dom.evaluate(() => {
+  return document.body.innerHTML;
 });
-
-// Store data
-marshall.storage.set('key', value);
-marshall.storage.get('key').then(value => {});
-
-// UI interactions
-marshall.ui.showPanel(html);
-marshall.ui.notify('Message', 'success');
 ```
 
-## 📖 Documentation
+### Categories
 
-See the [Wiki](https://github.com/bad-antics/marshall-extensions/wiki) for detailed documentation on:
-- Extension development guide
-- API reference
-- Best practices
-- Contributing guidelines
-
-## ⚠️ Disclaimer
-
-These extensions are provided for **educational and authorized security testing purposes only**. Always obtain proper authorization before testing systems you don't own.
-
-## 📜 License
-
-MIT License - See [LICENSE](LICENSE) for details
-
-## 🔗 Related Projects
-
-- [Marshall Browser](https://github.com/bad-antics/marshall) - The OSINT-focused browser
-- [NullSec Tools](https://github.com/bad-antics/nullsec-tools) - Security toolkit collection
-- [NullSec Linux](https://github.com/bad-antics/nullsec-linux) - Security-focused Linux distro
+| Category | Description |
+|----------|-------------|
+| `recon` | Reconnaissance & OSINT |
+| `vuln` | Vulnerability assessment |
+| `network` | Network analysis |
+| `forensics` | Digital forensics |
+| `utility` | General utilities |
 
 ---
 
-<p align="center">
-  <b>Part of the NullSec Security Suite</b><br>
-  <a href="https://github.com/bad-antics">@bad-antics</a>
-</p>
+## 📁 Project Structure
+
+```
+marshall-extensions/
+├── sandbox/                      # Security sandbox system
+│   ├── core/                     # Rust sandbox runtime
+│   │   ├── src/
+│   │   │   ├── lib.rs            # Sandbox entry point
+│   │   │   ├── isolation.rs      # Process isolation (seccomp, namespaces)
+│   │   │   ├── verification.rs   # Ed25519 signature verification
+│   │   │   ├── permissions.rs    # Permission enforcement
+│   │   │   └── threat.rs         # Threat scoring engine
+│   │   └── Cargo.toml
+│   ├── honeypot/                 # Go deception system
+│   │   ├── main.go               # Honeypot services
+│   │   ├── network.go            # Fake network services
+│   │   ├── api.go                # Fake API endpoints
+│   │   └── go.mod
+│   └── comm/                     # TypeScript secure channel
+│       ├── channel.ts            # Encrypted IPC
+│       ├── crypto.ts             # AES-256-GCM, ECDH
+│       └── package.json
+├── extensions/
+│   ├── recon/                    # Reconnaissance extensions
+│   │   ├── shodan-lookup/
+│   │   ├── whois-inspector/
+│   │   └── dns-analyzer/
+│   ├── vuln/                     # Vulnerability extensions
+│   │   ├── xss-scanner/
+│   │   ├── header-analyzer/
+│   │   └── cert-inspector/       # Ruby
+│   ├── network/                  # Network extensions
+│   │   ├── traffic-analyzer/     # TypeScript
+│   │   └── request-tamper/       # Lua
+│   ├── forensics/                # Forensics extensions
+│   │   └── memory-forensics/     # C
+│   └── utility/                  # Utility extensions
+├── lib/                          # Shared libraries
+│   ├── marshall-api.js           # Extension API
+│   └── common-utils.js           # Utilities
+├── docs/                         # Documentation
+│   ├── Home.md
+│   ├── Sandbox-Architecture.md
+│   └── Extension-Development.md
+└── README.md
+```
+
+---
+
+## 📖 Documentation
+
+| Document | Description |
+|----------|-------------|
+| [Sandbox Architecture](docs/Sandbox-Architecture.md) | Deep dive into the security sandbox |
+| [Extension Development](docs/Extension-Development.md) | Complete API reference and guides |
+| [Contributing](CONTRIBUTING.md) | How to contribute extensions |
+
+---
+
+## ⚠️ Disclaimer
+
+These extensions are provided for **educational and authorized security testing purposes only**. 
+
+- ✅ Use on systems you own or have explicit permission to test
+- ❌ Do not use for unauthorized access or malicious purposes
+- 📜 Follow all applicable laws and regulations
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how to submit a new extension:
+
+1. Fork this repository
+2. Create your extension in `extensions/<category>/`
+3. Include `manifest.json`, `main.js`, `icon.png`, and `README.md`
+4. Test with `marshall --test-extension ./your-extension`
+5. Submit a pull request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+---
+
+## 📄 License
+
+MIT License — See [LICENSE](LICENSE) for details.
+
+---
+
+## 🔗 Related Projects
+
+| Project | Description |
+|---------|-------------|
+| [Marshall Browser](https://github.com/bad-antics/marshall) | The privacy-focused browser |
+| [NullSec Tools](https://github.com/bad-antics/nullsec-tools) | Comprehensive security toolkit |
+| [NullSec Linux](https://nullsec.pages.dev) | Security-focused Linux distribution |
+
+---
+
+<div align="center">
+
+**Part of the NullSec Security Suite**
+
+Built by [bad-antics](https://github.com/bad-antics)
+
+[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/killers)
+[![Website](https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://bad-antics.github.io)
+
+</div>
