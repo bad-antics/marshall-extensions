@@ -1,0 +1,24 @@
+{
+  "name": "extension-manager",
+  "version": "1.0.0",
+  "description": "Manage, enable/disable, and configure Marshall browser extensions",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": [
+    "storage",
+    "extensions",
+    "system"
+  ],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "utility",
+  "marshall_version": ">=1.0.0",
+  "keywords": [
+    "extensions",
+    "manager",
+    "settings",
+    "plugins"
+  ],
+  "priority": 1
+}
