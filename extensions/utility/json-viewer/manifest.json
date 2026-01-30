@@ -1,0 +1,23 @@
+{
+  "name": "json-viewer",
+  "version": "1.0.0",
+  "description": "Beautiful JSON viewer with syntax highlighting, formatting, and search",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "utility",
+  "marshall_version": ">=1.0.0",
+  "keywords": [
+    "json",
+    "viewer",
+    "formatter",
+    "developer",
+    "api"
+  ]
+}

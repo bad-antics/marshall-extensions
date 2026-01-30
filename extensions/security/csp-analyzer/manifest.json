@@ -1,0 +1,24 @@
+{
+  "name": "csp-analyzer",
+  "version": "1.0.0",
+  "description": "Content Security Policy analyzer and vulnerability scanner",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "network"
+  ],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "security",
+  "marshall_version": ">=1.0.0",
+  "keywords": [
+    "csp",
+    "security",
+    "headers",
+    "xss",
+    "policy"
+  ]
+}

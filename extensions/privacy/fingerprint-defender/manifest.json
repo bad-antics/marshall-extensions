@@ -1,0 +1,31 @@
+{
+  "name": "fingerprint-defender",
+  "version": "1.0.0",
+  "description": "Defend against browser fingerprinting techniques",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "webRequest"
+  ],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "privacy",
+  "marshall_version": ">=1.0.0",
+  "keywords": [
+    "fingerprint",
+    "privacy",
+    "tracking",
+    "canvas",
+    "webgl"
+  ],
+  "settings": {
+    "block_canvas": true,
+    "block_webgl": true,
+    "block_audio": true,
+    "spoof_navigator": true,
+    "show_alerts": false
+  }
+}

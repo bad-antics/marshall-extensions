@@ -1,0 +1,38 @@
+{
+  "name": "password-analyzer",
+  "version": "1.0.0",
+  "description": "Analyze password strength and check against known breaches via Have I Been Pwned",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "network"
+  ],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "security",
+  "marshall_version": ">=1.0.0",
+  "keywords": [
+    "password",
+    "security",
+    "breach",
+    "hibp",
+    "strength"
+  ],
+  "settings": {
+    "check_breaches": {
+      "type": "boolean",
+      "label": "Check against breaches",
+      "description": "Check passwords against Have I Been Pwned database",
+      "default": true
+    },
+    "show_generator": {
+      "type": "boolean",
+      "label": "Show password generator",
+      "description": "Include password generation tool",
+      "default": true
+    }
+  }
+}

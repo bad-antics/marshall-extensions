@@ -1,0 +1,25 @@
+{
+  "name": "link-analyzer",
+  "version": "1.0.0",
+  "description": "Analyze and investigate suspicious links before clicking",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "network",
+    "contextMenu"
+  ],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "forensics",
+  "marshall_version": ">=1.0.0",
+  "keywords": [
+    "link",
+    "url",
+    "phishing",
+    "malware",
+    "analysis"
+  ]
+}

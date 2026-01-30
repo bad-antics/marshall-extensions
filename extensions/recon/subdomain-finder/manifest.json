@@ -1,0 +1,28 @@
+{
+  "name": "subdomain-finder",
+  "version": "1.0.0",
+  "description": "Discover subdomains using passive reconnaissance techniques",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "network"
+  ],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "osint",
+  "marshall_version": ">=1.0.0",
+  "keywords": [
+    "subdomain",
+    "recon",
+    "osint",
+    "enumeration",
+    "dns"
+  ],
+  "settings": {
+    "sources": ["crtsh", "hackertarget", "threatcrowd"],
+    "auto_check": false
+  }
+}

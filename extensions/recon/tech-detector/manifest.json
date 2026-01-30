@@ -1,0 +1,24 @@
+{
+  "name": "tech-detector",
+  "version": "1.0.0",
+  "description": "Detect technologies, frameworks, and CMS used by websites",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "network"
+  ],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "osint",
+  "marshall_version": ">=1.0.0",
+  "keywords": [
+    "technology",
+    "detection",
+    "wappalyzer",
+    "cms",
+    "framework"
+  ]
+}

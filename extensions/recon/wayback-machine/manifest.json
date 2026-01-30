@@ -1,0 +1,39 @@
+{
+  "name": "wayback-machine",
+  "version": "1.0.0",
+  "description": "Query the Wayback Machine for archived versions of any webpage",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "network",
+    "contextMenu"
+  ],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "osint",
+  "marshall_version": ">=1.0.0",
+  "keywords": [
+    "wayback",
+    "archive",
+    "osint",
+    "history",
+    "web-archive"
+  ],
+  "settings": {
+    "auto_check": {
+      "type": "boolean",
+      "label": "Auto-check archived versions",
+      "description": "Automatically check for archived versions when visiting pages",
+      "default": false
+    },
+    "show_calendar": {
+      "type": "boolean",
+      "label": "Show calendar view",
+      "description": "Display archived snapshots in calendar format",
+      "default": true
+    }
+  }
+}

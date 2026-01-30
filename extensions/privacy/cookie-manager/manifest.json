@@ -1,0 +1,45 @@
+{
+  "name": "cookie-manager",
+  "version": "1.0.0",
+  "description": "Advanced cookie viewer, editor, and manager with privacy insights",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "cookies",
+    "contextMenu"
+  ],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "privacy",
+  "marshall_version": ">=1.0.0",
+  "keywords": [
+    "cookies",
+    "privacy",
+    "tracking",
+    "security",
+    "manager"
+  ],
+  "settings": {
+    "auto_analyze": {
+      "type": "boolean",
+      "label": "Auto-analyze cookies",
+      "description": "Automatically analyze cookies when visiting sites",
+      "default": true
+    },
+    "block_known_trackers": {
+      "type": "boolean", 
+      "label": "Block known tracker cookies",
+      "description": "Automatically block cookies from known tracking domains",
+      "default": true
+    },
+    "show_badge": {
+      "type": "boolean",
+      "label": "Show cookie count badge",
+      "description": "Display number of cookies in toolbar",
+      "default": true
+    }
+  }
+}
