@@ -1,0 +1,14 @@
+{
+  "name": "screenshot-capture",
+  "version": "1.0.0",
+  "description": "Forensic screenshot capture with metadata, timestamps, and hash verification",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": ["activeTab", "storage", "tabs"],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "forensics",
+  "sandbox": { "required": true, "level": "standard" },
+  "keywords": ["screenshot", "forensics", "capture", "evidence", "hash"]
+}

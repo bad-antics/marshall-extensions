@@ -1,0 +1,14 @@
+{
+  "name": "cors-scanner",
+  "version": "1.0.0",
+  "description": "Detect CORS misconfigurations and insecure cross-origin policies",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": ["activeTab", "network"],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "security",
+  "sandbox": { "required": true, "level": "standard" },
+  "keywords": ["cors", "cross-origin", "security", "headers", "misconfiguration"]
+}

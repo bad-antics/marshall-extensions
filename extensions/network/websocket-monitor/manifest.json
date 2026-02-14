@@ -1,0 +1,14 @@
+{
+  "name": "websocket-monitor",
+  "version": "1.0.0",
+  "description": "Monitor, intercept, and analyze WebSocket connections",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": ["activeTab", "network", "webRequest"],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "network",
+  "sandbox": { "required": true, "level": "elevated" },
+  "keywords": ["websocket", "monitor", "intercept", "network", "real-time"]
+}

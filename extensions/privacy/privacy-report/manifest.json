@@ -1,0 +1,14 @@
+{
+  "name": "privacy-report",
+  "version": "1.0.0",
+  "description": "Generate comprehensive privacy analysis reports for visited sites",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": ["activeTab", "cookies", "network"],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "privacy",
+  "sandbox": { "required": true, "level": "standard" },
+  "keywords": ["privacy", "tracking", "analytics", "report", "gdpr"]
+}

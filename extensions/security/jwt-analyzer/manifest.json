@@ -1,0 +1,14 @@
+{
+  "name": "jwt-analyzer",
+  "version": "1.0.0",
+  "description": "Decode, analyze, and test JWT tokens for security vulnerabilities",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": ["activeTab", "cookies", "storage"],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "security",
+  "sandbox": { "required": true, "level": "standard" },
+  "keywords": ["jwt", "token", "authentication", "security", "decode"]
+}

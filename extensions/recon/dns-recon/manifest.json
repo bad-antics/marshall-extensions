@@ -1,0 +1,14 @@
+{
+  "name": "dns-recon",
+  "version": "1.0.0",
+  "description": "DNS reconnaissance and zone analysis for target domains",
+  "author": "bad-antics",
+  "homepage": "https://github.com/bad-antics/marshall-extensions",
+  "license": "MIT",
+  "permissions": ["activeTab", "network"],
+  "main": "main.js",
+  "icon": "icon.png",
+  "category": "recon",
+  "sandbox": { "required": true, "level": "elevated" },
+  "keywords": ["dns", "reconnaissance", "zone", "records", "enumeration"]
+}
