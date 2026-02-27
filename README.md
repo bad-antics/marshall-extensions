@@ -370,7 +370,7 @@ MIT License — See [LICENSE](LICENSE) for details.
 
 Built by [bad-antics](https://github.com/bad-antics)
 
-[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/killers)
+[![X/Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=x&logoColor=white)](https://x.com/AnonAntics)
 [![Website](https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://bad-antics.github.io)
 
 </div>
